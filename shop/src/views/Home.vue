@@ -47,6 +47,8 @@
 <script>
   import 'swiper/dist/css/swiper.css';
   import { swiper, swiperSlide } from 'vue-awesome-swiper';
+  import axios from 'axios';
+  import url from '@/service.config.js';
   export default{
     data(){
       return {
@@ -188,7 +190,8 @@
         },
       //  推荐商品
         varietyItem: [
-          // 热门商品
+          /*
+          //  推荐商品
           {
             name: "   汽油动力手推割杆机 养殖场专用青储割晒机",
             img:
@@ -301,14 +304,55 @@
             company: "  曲阜四达机械设备有限公",
             city: "济宁市"
           }
+          */
+
         ],
       }
     },
     components: {
       swiper,
       swiperSlide
-    }
-  }
+    },
+    created(){
+      /* mock尝试
+      //方法1: mock简介，拦截ajax请求
+      let url1 = 'http://www.a.com/getList';  //和mock.js中的地址一致，可以用来模拟地址，
+      axios.get(url1).then(res => {
+          console.log(res)
+      });
+
+        //方法2: mock简介拦截ajax请求
+     let url2 = 'http://www.a.com/getUser';
+     axios.get(url2).then(res => {
+       console.log(res)
+     })
+
+      //方法3: 正则
+      let url3 = 'http://www.a.com/regxp';
+      axios.get(url3).then( res => {
+        console.log(res)
+      })
+      //方法4：
+      let url4 = "http://www.a.com/list";
+      axios.get(url4).then(res => {
+        console.log(res)
+      })
+      */
+      /*随机生成推荐商品
+      // let url5 = "http://www.a.com/getVarietyItem";
+      // axios.get(url5).then( res => {
+      //   console.log(res.data)
+      //   this.varietyItem = res.data
+      // })
+      */
+      //统一定义后台接口
+      let url5 = url.getVarietyItem;
+      axios.get(url5).then( res => {
+        console.log(res.data);
+        this.varietyItem = res.data
+      })
+}
+}
 </script>
 <style lang="scss">
   /*body{*/
