@@ -5,9 +5,9 @@ import store from './store';
 import '@/assets/css/reset.css';
 import '@/assets/js/rem.js';
 import '@/mock/mock.js'
-import { Button,NavBar,Icon,Tabbar,TabbarItem, Swipe, SwipeItem,Lazyload } from 'vant';
+import { Button,NavBar,Icon,Tabbar,TabbarItem, Swipe, SwipeItem,Lazyload,Tab, Tabs,Field,Cell, CellGroup } from 'vant';
 
-Vue.use(Button).use(NavBar ).use(Icon).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload);
+Vue.use(Button).use(NavBar ).use(Icon).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload).use(Tab).use(Tabs).use(Field).use(Cell).use(CellGroup);
 
 Vue.config.productionTip = false;
 

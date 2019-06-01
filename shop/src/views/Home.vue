@@ -321,7 +321,7 @@
           console.log(res)
       });
 
-        //方法2: mock简介拦截ajax请求
+     //方法2: mock简介拦截ajax请求
      let url2 = 'http://www.a.com/getUser';
      axios.get(url2).then(res => {
        console.log(res)
