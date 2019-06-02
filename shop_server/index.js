@@ -9,6 +9,12 @@ app.use(cors({
     credentials: true
 }));
 
+//接收前端post请求
+const bodyParser = require('koa-bodyparser');
+app.use(bodyParser());
+    //存入数据库在cotroller - user.js
+
+
 //加载路由
 const Router = require('koa-router');
 let user = require('./controller/user.js');
@@ -17,8 +23,9 @@ router.use('/user', user.routes());//名字和service.config.js里的名字对�
 app.use(router.routes());
 app.use(router.allowedMethods());//配置接收get还是post
 
-//connect();
+
 //要先连接完成，再引入schema：所以不能直接调用connect和initSchema
+//connect();
 (async () => {
     await connect();
     initSchemas();

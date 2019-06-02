@@ -9,4 +9,4 @@ const userSchema = new Schema({  //每一个属性对应着集合中的字段名
     createDate: { type: Date, default: Date.now() }
 });
 //发布模型
-mongoose.model('User',userSchema);
+mongoose.model('User',userSchema);//发布时的模型名字叫做User，所以user.js中引用模型，就用这个名字

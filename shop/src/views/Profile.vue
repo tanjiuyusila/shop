@@ -9,7 +9,6 @@
                 v-model="loginUsername"
                 required
                 clearable
-                right-icon="question-o"
               />
               <van-field
                 label="密码"
@@ -18,7 +17,6 @@
                 v-model="loginPassword"
                 required
                 clearable
-                right-icon="question-o"
               />
 
 
@@ -76,9 +74,17 @@
             password:this.registPassword
           }
         }).then(res =>{
-              console.log(res)
+              // console.log(res)
+          if(res.data.code == 200){
+            this.$toast.success('注册成功');
+            this.registUsername = '';
+            this.registPassword = '';
+          }else{
+            this.$toast.fail('注册失败')
+          }
         }).catch(err => {
-              console.log(err)
+              console.log(err);
+          this.$toast.fail('注册失败')
         })
       }
     }
