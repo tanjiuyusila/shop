@@ -10,7 +10,7 @@ const userSchema = new Schema({  //每一个属性对应着集合中的字段名
     password: String,
     createDate: { type: Date, default: Date.now() }
 });
-//加严加密
+//加盐加密
 userSchema.pre('save',function (next){  //next:调用next进行下一步,不写箭头函数，
 
     bcrypt.genSalt(10,(err,salt) => { //随机生成盐；10：盐的迭代次数；
@@ -26,6 +26,21 @@ userSchema.pre('save',function (next){  //next:调用next进行下一步,不写�
     });
 });
 
+// 定义方法
+userSchema.methods = {
+    comparePassword:(_password,password)=>{
+        return new Promise((resolve,reject) => {
+            bcrypt.compare(_password,password,(err,isMatch) => {
+                if(!err) resolve(isMatch);
+                else reject(err)
+            })
+        })
+    }
+};
+
+
+
 
 //发布模型
 mongoose.model('User',userSchema);//发布时的模型名字叫做User，所以user.js中引用模型，就用这个名字
+
