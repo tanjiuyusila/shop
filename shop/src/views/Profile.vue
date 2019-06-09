@@ -51,6 +51,7 @@
 <script>
   import axios from 'axios';
   import url from '@/service.config.js';
+  import{ mapActions } from 'vuex';
   export default {
     data(){
       return{
@@ -61,6 +62,8 @@
       }
     },
     methods:{
+      ...mapActions(['loginAction']),
+
       //注册处理方法
       registHandler(){
         //axios对象写法
@@ -95,15 +98,28 @@
             password:this.loginPassword,
           }
         }).then(res => {
-            console.log(res)
+            // console.log(res);
+            if(res.data.code == 200){
+                //模拟网络不好，隔一段时间再进行判断
+              new Promise((resolve,reject) => { //异步操作管理
+                setTimeout(()=>{
+                  resolve();
+                },1000);
+              }).then(()=>{
+                this.$toast.success('登陆成功');
+                //保存登录状态
+                this.loginAction(res.data.userInfo);
+                this.$router.push('/')
+              }).catch(err=>{
+                this.$toast.fail('登录状态失败');
+              })
+            }
         }).catch(err => {
-
+              console.log(err);
+              this.$toast.fail('登录失败')
         })
       }
     }
   }
 </script>
 
-<style scoped lang="scss">
-
-</style>

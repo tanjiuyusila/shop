@@ -41,7 +41,9 @@ router.post('/loginUser',async (ctx) => {
                     if(isMatch){ //成功
                         ctx.body = {
                             code:200,
-                            message:'登陆成功'
+                            message:'登陆成功',
+
+                            userInfo:result
                         }
                     }else{  //失败
                         ctx.body = {

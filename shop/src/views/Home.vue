@@ -3,7 +3,8 @@
     <!--navBar-->
     <van-nav-bar title="首页" class="nav-title">
       <van-icon name="search" slot="left"></van-icon>
-      <van-icon name="cart" slot="right"></van-icon>
+      <!--<van-icon name="cart" slot="right"></van-icon>-->
+      <van-icon slot="right" @click="$router.push('/profile')">{{userInfo.userName}}</van-icon>
     </van-nav-bar>
     <!--轮播图-->
     <div class="carousel">
@@ -24,7 +25,6 @@
               <div>{{item.name}}</div>
               <div>￥{{item.price}}</div>
             </div>
-
           </swiper-slide>
       </swiper>
     </div>
@@ -49,6 +49,7 @@
   import { swiper, swiperSlide } from 'vue-awesome-swiper';
   import axios from 'axios';
   import url from '@/service.config.js';
+  import { mapState } from 'vuex';
   export default{
     data(){
       return {
@@ -348,10 +349,13 @@
       //统一定义后台接口
       let url5 = url.getVarietyItem;
       axios.get(url5).then( res => {
-        console.log(res.data);
+        // console.log(res.data);
         this.varietyItem = res.data
       })
-}
+},
+    computed:{
+      ...mapState(['userInfo']),
+    }
 }
 </script>
 <style lang="scss">
