@@ -19,10 +19,12 @@ app.use(bodyParser());
 const Router = require('koa-router');
 let user = require('./controller/user.js');
 let product = require('./controller/product.js');
+let type = require('./controller/type.js');
 
 let router = new Router();
 router.use('/user', user.routes());//名字和service.config.js里的名字对应
 router.use('/product', product.routes());//名字和service.config.js里的名字对应
+router.use('/type', type.routes());//名字和service.config.js里的名字对应
 app.use(router.routes());
 app.use(router.allowedMethods());//配置接收get还是post
 
