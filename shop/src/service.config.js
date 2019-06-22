@@ -9,5 +9,6 @@ const URL = {
   loginUser:SERVERURL + 'user/loginUser',//在user的控制器里面，对应的loginUser方法
   getTypes: SERVERURL + 'type/getTypes',
   getProductsByType: SERVERURL + 'product/getProductsByType',
+  getDetail: SERVERURL + 'product/getDetail',
 };
 export default URL;

@@ -14,7 +14,7 @@
           <van-col span="18" class="container">
             <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
               <van-list class="content" @load="onLoad" :finished="finished">
-                <div class="content-item" v-for="(item,index) in productList" :key="index">
+                <div @click="goDetail(item._id)" class="content-item" v-for="(item,index) in productList" :key="index">
                   <img :src="item.img" alt="">
                   <p class="content-item-name">{{item.name}}</p>
                   <p>{{'￥：'+item.price}}</p>
@@ -55,6 +55,30 @@
         });
       },
     methods:{
+         goDetail(id){
+           // console.log(id);
+           /*直接跳转
+            this.$router.push('/detail');
+            */
+           /*命名路由跳转
+           this.$router.push({
+             name:'detail',
+             params:{
+               id:id,
+             }
+           })
+           */
+           /*路径跳转
+           this.$router.push({
+             path:'/detail',
+             query:{
+               id,
+             }
+           })
+           */
+           /*路由界面参数传参*/
+           this.$router.push(`/detail/${id}`)
+         },
         onRefresh(){
           setTimeout(() => {
             this.productList = [];
