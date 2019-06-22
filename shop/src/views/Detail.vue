@@ -8,12 +8,21 @@
       <p >公司{{detail.company}}</p>
       <p >产地{{detail.city}}</p>
     </div>
+    <div class="toolBar">
+      <van-goods-action>
+        <van-goods-action-mini-btn icon="chat-o" text="客服"/>
+        <van-goods-action-mini-btn icon="cart-o" text="购物车"/>
+        <van-goods-action-big-btn text="加入购物车" @click="addCart"/>
+        <van-goods-action-big-btn primary text="立即购买"/>
+      </van-goods-action>
+    </div>
   </div>
 </template>
 
 <script>
   import axios from 'axios';
-  import url from '@/service.config.js'
+  import url from '@/service.config.js';
+  import {mapState} from 'vuex';
   export default {
       data(){
         return{
@@ -35,8 +44,25 @@
         }).catch(err => {
           console.log(err);
         })
+      },
+    methods:{
+      addCart(){
+        console.log('addCart');
+      //  检查用户是否登陆：前端vuex保存登录状态，如果后端保存登录状态，可以使用koa-session和redis
+        if(JSON.stringify(this.userInfo) === '{}'){
+            this.$toast.fail('请登录');
+            setTimeout(() => {
+              this.$router.push('/profile');
+            },1000);
+        }else{
+        //    插入购物车
 
-      }
+        }
+      },
+    },
+    computed:{
+      ...mapState(['userInfo'])
+    },
   }
 </script>
 

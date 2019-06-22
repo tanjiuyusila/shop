@@ -4,7 +4,11 @@
     <van-nav-bar title="首页" class="nav-title">
       <van-icon name="search" slot="left"></van-icon>
       <!--<van-icon name="cart" slot="right"></van-icon>-->
-      <van-icon slot="right" @click="$router.push('/profile')">{{userInfo.userName}}</van-icon>
+      <!--<van-icon slot="right" @click="$router.push('/profile')">{{userInfo.userName}}</van-icon>-->
+<!--判断是否是空对象-->
+      <van-icon slot="right" @click="$router.push('/profile')">
+        {{JSON.stringify(userInfo) == '{}' ? '未登录':userInfo.userName}}
+      </van-icon>
     </van-nav-bar>
     <!--轮播图-->
     <div class="carousel">

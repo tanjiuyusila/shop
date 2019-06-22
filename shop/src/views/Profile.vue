@@ -109,7 +109,7 @@
                 this.$toast.success('登陆成功');
                 //保存登录状态
                 this.loginAction(res.data.userInfo);
-                this.$router.push('/')
+                this.$router.go(-1);
               }).catch(err=>{
                 this.$toast.fail('登录状态失败');
               })
