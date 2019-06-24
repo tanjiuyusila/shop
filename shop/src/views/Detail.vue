@@ -56,7 +56,18 @@
             },1000);
         }else{
         //    插入购物车
-
+            axios({
+              url:url.addCart,
+              method:'post',
+              data:{
+                productId:this.detail._id,
+                userId:this.userInfo._id,
+              }
+            }).then(res => {
+                console.log(res);
+            }).catch(err => {
+              console.log(err);
+            })
         }
       },
     },
