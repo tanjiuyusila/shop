@@ -11,5 +11,6 @@ const URL = {
   getProductsByType: SERVERURL + 'product/getProductsByType',
   getDetail: SERVERURL + 'product/getDetail',
   addCart:SERVERURL + 'cart/addCart',
+  getCart:SERVERURL + 'cart/getCart',
 };
 export default URL;

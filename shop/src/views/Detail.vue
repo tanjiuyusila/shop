@@ -65,6 +65,9 @@
               }
             }).then(res => {
                 console.log(res);
+              if(res.data.code == 200){
+                this.$toast.success('添加成功');
+              }
             }).catch(err => {
               console.log(err);
             })
