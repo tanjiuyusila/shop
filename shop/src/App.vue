@@ -1,6 +1,13 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <!--<router-view></router-view>-->
+
+<!--缓存路由组建-->
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
+
     <!--某些组件不显示footer-->
     <router-view name="footer-bar"></router-view>
 
